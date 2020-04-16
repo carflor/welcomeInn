@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Webpack Starter Kit
 
 ## Clone This Repo
@@ -103,3 +104,7 @@ _If you are finished with the functionality and testing of your project_, then y
 [GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
 
 If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+=======
+# welcomeInn
+Final Project for Module 2 - Turing School of Software and Design
+>>>>>>> 6ad252c9f8762fd70fcb05a71cca29bc36f634f8
