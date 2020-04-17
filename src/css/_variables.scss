@@ -1,0 +1,14 @@
+$primary-background: #30475e;
+$button-color: #ebf5fc;
+$main-color: #f2a365;
+$header-font: 'Lato', sans-serif;
+$icon-color: #FFFDF9;
+$faded-color: #bdcada;
+$shadow: rgba(255, 255, 255, 0.3);
+
+@mixin flexed($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: space-between;
+  align-items: center;
+}
