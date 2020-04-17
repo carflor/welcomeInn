@@ -2,12 +2,39 @@
 <html lang="en-US">
   <head>
     <title>Welcome Inn</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/scss" href="base.scss">
   </head>
   <body>
-    <h1>Wecome Inn</h1>
+    <!-- <img alt="building-background" src="./images/background.jpg" width="100%" height="100%"> -->
+    <nav>
+      <img src="https://img.icons8.com/dotty/80/000000/building.png"/>
+      <h1>Welcome Inn</h1>
+      <div class="button-container">
+        <button>Book</button>
+        <button>History</button>
+      </div>
+    </nav>
+    <main class="login-container">
+      <div class="form">
+        <h2>Log In</h2>
+        <div class="input">
+          <div class="inputBox">
+            <label>Username</label>
+            <input type="text" placeholder="Enter Customer Number">
+          </div>
+          <div class="inputBox">
+            <label>Password</label>
+            <input type="password" placeholder="*******">
+          <div class="inputBox">
+            <input type="submit" value="Sign In">
+          </div>
+        </div>
+      </div>
 
-    <img src="./images/background.jpg" alt="building picture background" height="100px" width="100px">
-
+    </main>
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>
