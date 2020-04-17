@@ -1,0 +1,32 @@
+nav {
+  @include flexed(row);
+  justify-content: space-between;
+  background-color: $main-color;
+  font-family: $header-font;
+  pointer-events: none;
+}
+
+h1 {
+  letter-spacing: 1px;
+  font-size: 2em;
+}
+
+button {
+  color: $primary-background;
+  background-color: lighten($button-color, 30%);
+  border-radius: 10px;
+  border: hidden;
+  padding: 5px;
+  margin-right: 3em;
+  width: 8em;
+  height: 3.3em;
+  font-size: .9em;
+  letter-spacing: 1px;
+  font-weight: 700;
+  box-shadow: -1px -1px 6px $shadow;
+  pointer-events: auto;
+  &:hover {
+    border-radius: 10px;
+    border: 1px solid darken($button-color, 30%);
+  }
+}
