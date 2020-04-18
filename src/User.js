@@ -7,19 +7,18 @@ class User {
   }
 
   bookingHistory() {
-    // reservations should be transformed into arr of obj specific 
-    // to the id for user
-    // iterates over bookings arrray and returns objects that 
-    // match userID with this.id
+    // this works if the data is an array of objects
+    return reservations.filter(reservation => {
+      return reservation.userID === this.id;
+    })
   }
 
   bookRoom() {
     // should make a POST to update the rooms available
-
   }
 
   unbookRoom() {
-
+    // should delete fetch the future reservation
   }
 }
 
