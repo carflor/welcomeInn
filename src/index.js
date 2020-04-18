@@ -1,17 +1,14 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-// An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from "jquery";
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/background.jpg';
+// An example of how you tell webpack to use an image
+// import './images/background.jpg';
+// const moment = require('moment')
 import moment from 'moment';
-// const moment = require('moment');
-import Hotel from './Hotel';
-import Booking from './Booking';
-import User from './User';
 import ApiController from './ApiController';
+import Manager from './Manager';
+import Room from './Room';
+import User from './User';
+import Booking from './Booking';
 
 let api = new ApiController();
 let manager;
@@ -27,13 +24,13 @@ const fetchData = () => {
       let userData = finalData[0]
       let roomData = finalData[1]
       let reservationData = finalData[2]
-      loadHotel(userData, roomData, reservationData)
+      loadManager(userData, roomData, reservationData)
     }).catch(error => console.log(error.message))
 }
 
 function loadManager(userData, roomData, reservationData) {
+  manager = new Manager(userData, roomData, reservationData)
   let today = moment().format("YYYY-MM-DD").split('-').join('/')
-  manager = new Hotel(userData, roomData, reservationData)
   
 }
 
