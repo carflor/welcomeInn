@@ -1,11 +1,11 @@
 import moment from 'moment';
 
 class Manager {
-  constructor(reservations, rooms, users, userNow) {
+  constructor(reservations, rooms, users) {
     this.reservations = reservations;
     this.rooms = rooms;
     this.users = users;
-    this.userNow = userNow;
+    // this.userNow = userNow;
   }
 
   bookRoom() {
@@ -13,11 +13,11 @@ class Manager {
   }
 
   deleteBooking() {
-    deletes a booking post
+    // deletes a booking post
   }
 
   currentOccupancy() {
-        // provides percentage of occupancy
+    // provides percentage of occupancy
     // provides rooms that are occupied
   }
 
