@@ -63,6 +63,9 @@ $('.submit-button').click(() => {
   }
 })
 
+// LOG OUT BUTTON
+$('.logout').click(() => location.reload(true))
+
 // DISPLAY DASHBOARD PAGES
 function displayManagerDashboard() {
   $('.login-container').hide()
