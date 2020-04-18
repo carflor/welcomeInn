@@ -18,44 +18,44 @@ class ApiController {
     return fetch(url).then(response => response.json());
   }
 
-  postUserData(userId, fullName) {
-    let userObj = {
-      "id": Number(userId),
-      "name": fullName,
-    }
-    let url = `${this.rootUrl}/users/users`;
-    return fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userObj),
-    })
-      .then(response => console.log(response.json()))
-      .catch(err => console.log(err.message));
-  }
+  // postUserData(userId, fullName) {
+  //   let userObj = {
+  //     "id": Number(userId),
+  //     "name": fullName,
+  //   }
+  //   let url = `${this.rootUrl}/users/users`;
+  //   return fetch(url, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(userObj),
+  //   })
+  //     .then(response => console.log(response.json()))
+  //     .catch(err => console.log(err.message));
+  // }
 
-  postRoomData(roomId, roomType, bidet, bedSize, numBeds, costPerNight) {
-    let roomObj = {
-      "number": Number(roomId),
-      "roomType": roomType,
-      "bidet": bidet,
-      "bedSize": bedSize,
-      "numBeds": Number(numBeds),
-      "costPerNight": Number(costPerNight),
-    }
+  // postRoomData(roomId, roomType, bidet, bedSize, numBeds, costPerNight) {
+  //   let roomObj = {
+  //     "number": Number(roomId),
+  //     "roomType": roomType,
+  //     "bidet": bidet,
+  //     "bedSize": bedSize,
+  //     "numBeds": Number(numBeds),
+  //     "costPerNight": Number(costPerNight),
+  //   }
 
-    let url = `${this.rootUrl}/rooms/rooms`;
-    return fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(roomObj),
-    })
-      .then(response => console.log(response.json()))
-      .catch(err => console.log(err.message));
-  }
+  //   let url = `${this.rootUrl}/rooms/rooms`;
+  //   return fetch(url, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(roomObj),
+  //   })
+  //     .then(response => console.log(response.json()))
+  //     .catch(err => console.log(err.message));
+  // }
 
   postBookingData(id, userId, date, roomNumber, roomServiceCharges) {
     let bookingObj = {
