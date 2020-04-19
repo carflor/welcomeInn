@@ -1,40 +1,64 @@
 import moment from 'moment';
+import Booking from './Booking';
 
 class Manager {
-  constructor(reservations, rooms, users) {
+  constructor(reservations, rooms, users, date) {
     this.reservations = reservations;
     this.rooms = rooms;
     this.users = users;
-    // this.userNow = userNow;
+    this.date = date;
+  }
+    
+  bookingHistoryById(userId, reservations) {
+    return reservations.filter(reservation => {
+      return reservation.userID === userId
+    })
   }
 
-  bookRoom() {
-    // makes a post with a specific user id to a specific room #
+  getReservationsByDate(date) {    
+    return this.reservations.filter(booking => booking.date === date)
+  }
+
+  bookRoom(booking) {
+    // reservation is an obj that contains date / userId / room Number
+    // when would this affect the DOM?
+    this.reservations.push(booking)
+  }
+
+  currentOccupancy(date) {
+    let unavailableRooms = this.getReservationsByDate(date)
+    let occupancyPercent = (unavailableRooms.length / this.rooms.length) * 100
+    return occupancyPercent
+  }
+
+  totalRevenue(date) {
+    let roomNums = this.reservations.filter(reservation => reservation.date === date).map(reservation => reservation.roomNumber)
+    let revenueToday = roomNums.reduce((acc, roomNum) => {
+      acc += this.rooms.find(room => room.number === roomNum).costPerNight
+      return acc
+    }, 0);
+    return revenueToday
+  }
+
+  // might be a dom method
+  displayAvailableRooms(date) {
+    let booked = this.getReservationsByDate(date) 
+    let unbooked = this.rooms.map(room => room.number).filter(num => !booked.includes(num))
+    // message for no rooms available
+    // when does this trigger a dom change
+    if (unbooked.length === 0) {
+      unbooked = "We are very sorry, but we currently have no rooms available for that day! "
+    }
+    return unbooked
+  }
+
+  filterByType(roomType) {
+    return this.rooms.filter(room => room.roomType === roomType)
   }
 
   deleteBooking() {
     // deletes a booking post
-  }
-
-  currentOccupancy() {
-    // provides percentage of occupancy
-    // provides rooms that are occupied
-  }
-
-  totalRevenue() {
-    // calculates cost of room and amount of rooms occupied and gives out a value
-    // maybe another add the amount per date
-
-  }
-
-  availableRooms() {
- // provides cards or list of available rooms
-    // if no ROOMS available
-    // Display "sorry message"
-  }
-
-  filterByType() {
-    // provides rooms available for a certain type
+    // should trigger fetch delete request by booking randomized id 
   }
 }
 
