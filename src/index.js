@@ -49,13 +49,13 @@ function loadCustomer(customerId, manager) {
       guest.push(user)
     }
   })
-  customer = new User(guest[0].id, guest[0].name, guestRooms, guestReservations)
+  customer = new User(guest[0].id, guest[0].name, guestReservations, guestRooms)
   displayCustomer(customer)
 }
 
 function displayCustomer(customer) {
   $('.guest-name').text(customer.name)
-  $('.points-message').text(`You currently have ${customer.rewardPoints()}Reward Points!`)
+  $('.points-message').text(`You currently have ${customer.rewardPoints().toFixed(0)} Reward Points!`)
 }
 
 // LOG IN VALIDATION
