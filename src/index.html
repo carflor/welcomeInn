@@ -7,19 +7,23 @@
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/scss" href="base.scss">
   </head>
   <body>
     <nav>
+      <div class="banner-container">
       <img src="https://img.icons8.com/dotty/80/000000/building.png"/>
       <h1>Welcome Inn</h1>
-      <div class="button-container invisible">
+      </div>
+      <div class="button-container">
+        <button class="rooms invisible">GUESTS</button>
         <button class="rooms">ROOMS</button>
         <button class="history">HISTORY</button>
         <button class="logout">LOG OUT</button>
       </div>
     </nav>
-    <main class="login-container">    
+    <main class="login-container hidden">    
       <div class="form">
         <h2>Log In</h2>
         <div class="input">
@@ -36,10 +40,47 @@
         </div>
       </div>
     </main>
-    <main class="user-dashboard hidden">
+    <main class="user-dashboard">
+      <section class="left-container">
+        <h2 class="guest-title">Guest Dashboard</h2>
+        <!-- iterate over users that matches the customer number and display correct name below -->
+        <h3 class="guest-name">Rocio Schuster</h3>
+        <!-- iterate over with method that calculates reward points for past reservations -->
+        <h4 class="points-message">You currently have 1,270 reward points!</h4>
+      </section>
+      <section class="right-container">
+        <h3 class="reservations-title">Upcoming reservations:</h3>
+        <section class="current-reservation">
+          <!-- interpolate current date -->
+          <p class="reservation-date">01/02/2098</p>
+          <!-- interpolate room number  -->
+          <p>ROOM # 4</p>
+          <!-- interpolate correct type of room -->
+          <p>"Residential Suite"</p>
+          <!-- interpolate the amount of beds and type of beds next to one another -->
+          <p>2 Queen Beds</p>
+        </section>
 
+        <!-- this could be a repeat button that takes you to rooms per date button  -->
+        <!-- this could be a copy of the same button at the bottom of the reservation -->
+        <button class="bottom-book-btn">Book A Room</button>
+
+      </section>
     </main>
     <main class="manager-dashboard hidden">
+      <section class="left-container">
+        <h2 class="guest-title">Manager Dashboard</h2>
+        <!-- iterate over users that matches the customer number and display correct name below -->
+        <h3 class="reservations-guest-title">This should display date - revenue</h3>
+        <!-- iterate over with method that calculates reward points for past reservations -->
+        <h4 class="points-message">This should display current occupancy</h4>
+      
+      </section>
+      <section class="right-container">
+        <h3 class="reservations-guest-title">Here are your upcoming reservations Carolina Sosa</h3>
+        <h3 class="reservations-guest-title">Book A Room</h3>
+
+      </section>
 
     </main>
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
