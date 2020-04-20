@@ -79,4 +79,8 @@
   background-color: $main-color;
   text-transform: uppercase;
   letter-spacing: 1px;
+  &:hover {
+    border-radius: 10px;
+    background-color: darken($main-color, 5%);
+  }
 }
