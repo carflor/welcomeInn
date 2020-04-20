@@ -13,52 +13,74 @@ import Booking from './Booking';
 let api = new ApiController();
 let manager;
 let customer;
+let userData;
+let roomData;
+let reservationData;
+let today;
 
 const fetchData = () => {
-  let userData = api.getUsersData()
-  let roomData = api.getRoomData()
-  let reservationData = api.getReservationData()
+  userData = api.getUsersData()
+  roomData = api.getRoomData()
+  reservationData = api.getReservationData()
 
   Promise.all([userData, roomData, reservationData])
     .then(finalData => {
-      let userData = finalData[0]
-      let roomData = finalData[1]
-      let reservationData = finalData[2]
+      userData = Object.values(finalData[0])
+      roomData = Object.values(finalData[1])
+      reservationData = Object.values(finalData[2])
       loadManager(userData, roomData, reservationData)
     }).catch(error => console.log(error.message))
 }
 
+// MANAGER INSTANTIATION
 function loadManager(userData, roomData, reservationData) {
   manager = new Manager(userData, roomData, reservationData)
-  let today = moment().format("YYYY-MM-DD").split('-').join('/')
-  
+  today = moment().format("YYYY-MM-DD").split('-').join('/')
+  console.log(manager);
 }
 
-// function loadUsers(userData, arr) {
-//   // instead of a for each i need to validate according to the password id!
-//   userData.forEach(function(datum) {
-//     let user = new User(datum)
-//     arr.push(user)
-//   })
-// }
+// CUSTOMER INSTANTIATION
+function loadCustomer(customerId, manager) {
+  let guest = []
+  let guestRooms = manager.rooms[0]
+  let guestReservations = manager.bookingHistoryById(customerId, reservationData)
+  manager.users[0].forEach(user => {
+    if (user.id === customerId) {
+      guest.push(user)
+    }
+  })
+  customer = new User(guest[0].id, guest[0].name, guestRooms, guestReservations)
+  displayCustomer(customer)
+}
 
+function displayCustomer(customer) {
+  $('.guest-name').text(customer.name)
+  $('.points-message').text(`You currently have ${customer.rewardPoints()}Reward Points!`)
+}
+
+// LOG IN VALIDATION
 $('.submit-button').click(() => {
   let username = $('.username-input')
   let password = $('.password-input')
   let customer = username.val().split('').splice(0, 8).join('')
   let customerId = Number(username.val().split('').splice(8).join(''))
-  console.log('user ID', customerId)
-  console.log('user', customer)
+
   if ((customer === 'manager') && (password.val() === 'overlook2020')) {
     displayManagerDashboard()
   } else if ((customer === 'customer' && customerId) && (password.val() === 'overlook2020')) {
     displayCustomerDashboard(customerId)
+    loadCustomer(customerId, manager)
   } else {
-    alert("Please Enter Correct Username and Password")
-    $('.username-input').val('')
-    $('.password-input').val('')
+    incorrectLogin()
   }
 })
+
+function incorrectLogin() {
+  alert("Please Enter Correct Username and Password")
+  $('.username-input').val('')
+  $('.password-input').val('')
+}
+
 
 // LOG OUT BUTTON
 $('.logout').click(() => location.reload(true))
@@ -72,7 +94,7 @@ function displayManagerDashboard() {
 
 function displayCustomerDashboard() {
   $('.login-container').hide()
-  $('.manager-dashboard').show()
+  $('.user-dashboard').show()
   $('.button-container').removeClass('invisible')
 }
 
