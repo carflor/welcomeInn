@@ -2,12 +2,46 @@
 <html lang="en-US">
   <head>
     <title>Welcome Inn</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/scss" href="base.scss">
   </head>
   <body>
-    <h1>Wecome Inn</h1>
+    <nav>
+      <img src="https://img.icons8.com/dotty/80/000000/building.png"/>
+      <h1>Welcome Inn</h1>
+      <div class="button-container invisible">
+        <button class="rooms">ROOMS</button>
+        <button class="history">HISTORY</button>
+        <button class="logout">LOG OUT</button>
+      </div>
+    </nav>
+    <main class="login-container">    
+      <div class="form">
+        <h2>Log In</h2>
+        <div class="input">
+          <div class="inputBox">
+            <label>Username</label>
+            <input class="username-input" type="text" placeholder="Enter Customer Number">
+          </div>
+          <div class="inputBox">
+            <label>Password</label>
+            <input class="password-input" type="password" placeholder="*******">
+          <div class="inputBox">
+            <input class="submit-button" type="submit" value="Sign In">
+          </div>
+        </div>
+      </div>
+    </main>
+    <main class="user-dashboard hidden">
 
-    <img src="./images/background.jpg" alt="building picture background" height="100px" width="100px">
+    </main>
+    <main class="manager-dashboard hidden">
 
+    </main>
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>
