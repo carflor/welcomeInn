@@ -2,15 +2,16 @@ import moment from 'moment';
 import Booking from './Booking';
 
 class Manager {
-  constructor(reservations, rooms, users, date) {
-    this.reservations = reservations;
-    this.rooms = rooms;
+  constructor(users, rooms, reservations, date) {
     this.users = users;
+    this.rooms = rooms;
+    this.reservations = reservations;
     this.date = date;
   }
-    
+  // THESE METHODS WILL NEED TO REFER TO INDEX ZERO TO BE ABLE TO REACH NESTED DATA!!!!!!!!!!
+
   bookingHistoryById(userId, reservations) {
-    return reservations.filter(reservation => {
+    return reservations[0].filter(reservation => {
       return reservation.userID === userId
     })
   }
