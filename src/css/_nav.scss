@@ -8,7 +8,14 @@ nav {
 
 h1 {
   letter-spacing: 1px;
-  font-size: 2em;
+  padding-left: 20px;
+  font-size: 2.3em;
+}
+
+.banner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button {
