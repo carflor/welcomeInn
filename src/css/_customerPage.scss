@@ -65,16 +65,25 @@
   p {
     margin: 1em;
     height: 6vh;
-    border-bottom: 1px solid #ee8736;
+    border-bottom: 1px solid $shiny-border;
     align-items: center;
     font-size: 1.5em;
     letter-spacing: .5px;
   }
 }
 
+span {
+  font-size: .8em;
+  color: $main-color;
+}
+
+.no-reservations {
+  font-size: 2.8vh;
+}
+
 .bottom-book-btn {
-  // align-self: end;
   margin-bottom: 2%;
+  margin-right: 0em;
   width: 15vw;
   background-color: $main-color;
   text-transform: uppercase;
