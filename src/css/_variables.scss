@@ -1,10 +1,13 @@
 $primary-background: #30475e;
-$button-color: #ebf5fc;
 $main-color: #f2a365;
-$header-font: 'Lato', sans-serif;
+$button-color: #ebf5fc;
+$room-color: #222831;
 $icon-color: #FFFDF9;
 $faded-color: #bdcada;
+$shiny-border: #ee8736;
 $shadow: rgba(255, 255, 255, 0.3);
+$header-font: 'Lato', sans-serif;
+$name-font: 'Courgette', cursive;
 
 @mixin flexed($direction) {
   display: flex;

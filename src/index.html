@@ -7,13 +7,17 @@
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/scss" href="base.scss">
   </head>
   <body>
     <nav>
+      <div class="banner-container">
       <img src="https://img.icons8.com/dotty/80/000000/building.png"/>
       <h1>Welcome Inn</h1>
+      </div>
       <div class="button-container invisible">
+        <button class="guests invisible">GUESTS</button>
         <button class="rooms">ROOMS</button>
         <button class="history">HISTORY</button>
         <button class="logout">LOG OUT</button>
@@ -37,10 +41,51 @@
       </div>
     </main>
     <main class="user-dashboard hidden">
-
+      <section class="left-container">
+        <h2 class="guest-title">Guest Dashboard</h2>
+        <h3 class="guest-name"></h3>
+        <h4 class="points-message"></h4>
+      </section>
+      <section class="right-container">
+        <h3 class="reservations-title">Upcoming reservations:</h3>
+        <div class="reservations-container">
+      <!-- THIS IS WHERE THE RESERVATION CARD GOES -->
+        </div>
+        <button class="bottom-book-btn">Book A Room</button>
+      </section>
     </main>
     <main class="manager-dashboard hidden">
+      <section class="left-container">
+        <h2 class="guest-title">Manager Dashboard</h2>
+        <!-- iterate over users that matches the customer number and display correct name below -->
+        <h3 class="reservations-guest-title">This should display date - revenue</h3>
+        <!-- iterate over with method that calculates reward points for past reservations -->
+        <h4 class="points-message">This should display current occupancy</h4>
+      
+      </section>
+      <section class="right-container">
+        <h3 class="reservations-guest-title">Here are your upcoming reservations Carolina Sosa</h3>
+        <h3 class="reservations-guest-title">Book A Room</h3>
 
+      </section>
+
+    </main>
+    <main class="rooms-main hidden">
+      <div class="date-container">
+        <label for="date selection">Pick a Date:</label>
+        <input type="date" min="2019-01-01" name="date selection">
+      </div>
+      <section class="rooms-container">
+        <!-- INSERT ROOMS HERE -->
+      </section>
+    </main>
+    <main class="guest-history-main hidden">
+      <div class="search-container">
+      <input type="text" placeholder="Search..." name="search">
+      <section class="history-container">
+      </div>
+
+      </section>
     </main>
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>

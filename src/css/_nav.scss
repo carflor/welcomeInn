@@ -8,14 +8,20 @@ nav {
 
 h1 {
   letter-spacing: 1px;
-  font-size: 2em;
+  padding-left: 20px;
+  font-size: 2.3em;
+}
+
+.banner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button {
   color: $primary-background;
   background-color: lighten($button-color, 30%);
   border-radius: 10px;
-  // border: hidden;
   border: outset;
   padding: 5px;
   margin-right: 3em;

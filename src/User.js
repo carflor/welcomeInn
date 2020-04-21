@@ -1,25 +1,37 @@
+import Booking from "./Booking";
+
 class User {
-  constructor(reservations, rooms) {
+  constructor(id, name, reservations, rooms) {
     this.id = id;
     this.name = name;
-    this.reservations = reservations;
+    // list of rooms available for booking
     this.rooms = rooms;
+    // list of reservations past / present / future
+    this.reservations = reservations;
   }
 
-  bookingHistory() {
-    // reservations should be transformed into arr of obj specific 
-    // to the id for user
-    // iterates over bookings arrray and returns objects that 
-    // match userID with this.id
+  bookRoom(booking) {
+    let bookedRoom = new Booking(booking)
+    // instantiate a booking 
+    this.reservations.push(bookedRoom)
+    // adds a reservations to the array
   }
 
-  bookRoom() {
-    // should make a POST to update the rooms available
-
+  rewardPoints() {
+    return this.reservations.reduce((acc, reservation) => {  
+      this.rooms.forEach(room => {
+        if (reservation.roomNumber === room.number) {
+          acc += room.costPerNight
+        }
+      })
+      return acc
+    }, 0)
   }
 
   unbookRoom() {
-
+    // this should find a booking in the 
+    // reservations array and remove it 
+    // should delete fetch the future reservation
   }
 }
 

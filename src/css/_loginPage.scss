@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10%;
 }
 
 // perhaps un-nest these a bit and style per class name
@@ -34,7 +33,7 @@
         border: none;
         padding: 5px 10px;
         font-size: 18px;
-        border-bottom:1px solid $main-color;
+        border-bottom: 1px solid $main-color;
         &::placeholder {
           color: $faded-color;
           font-size: 18px;

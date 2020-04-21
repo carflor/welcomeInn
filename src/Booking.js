@@ -1,10 +1,11 @@
 class Booking {
-  constructor(id, userId, date, roomNumber, roomServiceCharges) {
-    this.id = id;
-    this.userId = userId;
-    this.date = date;
-    this.roomNumber = roomNumber;
-    this.roomServiceCharges = roomServiceCharges;
+  // feeding a whole OBJ as the booking
+  constructor(booking) {
+    this.id = booking.id;
+    this.userID = booking.userID;
+    this.date = booking.date;
+    this.roomNumber = booking.roomNumber;
+    this.roomServiceCharges = booking.roomServiceCharges;
   }
 }
 

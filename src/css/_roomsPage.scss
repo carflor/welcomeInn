@@ -1,0 +1,48 @@
+.rooms-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-flow: wrap;
+} 
+
+.date-container {
+  font-size: 2.7vh;
+  color: $button-color;
+  margin: 2vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  input {
+    margin: 0vh 1vh;
+    pointer-events: auto;
+  }
+}
+
+.room-card {
+  margin: 1vh 1vw;
+  width: 28vw;
+  color: $button-color;
+  background-color: lighten($room-color, 30%);
+  border-radius: 12px;
+  p {
+    margin: 1.5vh;
+    height: 6vh;
+    border-bottom: 2px solid $shiny-border;
+    align-items: center;
+    font-size: 1.3em;
+  }
+}
+
+.book {
+  margin-bottom: 2%;
+  margin-right: 0em;
+  width: 15vw;
+  background-color: $main-color;
+  text-transform: uppercase;
+  letter-spacing: .2vw;
+  &:hover {
+    background-color: darken($main-color, 5%);
+  }
+}

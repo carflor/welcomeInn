@@ -1,0 +1,95 @@
+.left-container {
+  display: grid;
+  width: 40vw;
+  height: 60vh;
+  border-radius: 10px;
+  background: saturate($button-color, 55%);
+  text-align: center;
+  box-shadow: -1px -1px 6px $shadow;
+}
+
+.guest-title {
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: $primary-background;
+}
+
+.guest-name {
+  letter-spacing: .4px;
+  font-size: 3em;
+  padding: 10px;
+  color: $primary-background;
+  font-family: $name-font;
+}
+
+.points-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-top: 4px solid darken(#f2a365, 10%);
+  font-size: 2em;
+  background: lighten($main-color, 4%);
+  border-radius: 5px;
+}
+
+.right-container {
+  display: grid;
+  justify-items: center;
+  justify-self: center;
+  align-items: center;
+  width: 40vw;
+  height: 78vh;
+  border-radius: 10px;
+  background: saturate($button-color, 55%);
+  text-align: center;
+  box-shadow: -1px -1px 6px $shadow;
+}
+
+.reservations-title {
+  color: $primary-background;
+  letter-spacing: 1px;
+  padding: 5px 5px;
+  font-size: 1.6em;
+  border-bottom: 3px solid lighten($room-color, 15%);
+}
+
+.current-reservation {
+  margin: 10px;
+  width: 28vw;
+  color: $button-color;
+  background-color: lighten($room-color, 30%);
+  padding: 10px;
+  border-radius: 12px;
+  overflow: scroll;
+  p {
+    margin: 1em;
+    height: 6vh;
+    border-bottom: 1px solid $shiny-border;
+    align-items: center;
+    font-size: 1.5em;
+    letter-spacing: .5px;
+  }
+}
+
+span {
+  font-size: .8em;
+  color: $main-color;
+}
+
+.no-reservations {
+  font-size: 2.8vh;
+}
+
+.bottom-book-btn {
+  margin-bottom: 2%;
+  margin-right: 0em;
+  width: 15vw;
+  background-color: $main-color;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  &:hover {
+    border-radius: 10px;
+    background-color: darken($main-color, 5%);
+  }
+}
