@@ -17,7 +17,7 @@
       <h1>Welcome Inn</h1>
       </div>
       <div class="button-container invisible">
-        <button class="rooms invisible">GUESTS</button>
+        <button class="guests invisible">GUESTS</button>
         <button class="rooms">ROOMS</button>
         <button class="history">HISTORY</button>
         <button class="logout">LOG OUT</button>
@@ -69,6 +69,23 @@
 
       </section>
 
+    </main>
+    <main class="rooms-main hidden">
+      <div class="date-container">
+        <label for="date selection">Pick a Date:</label>
+        <input type="date" min="2019-01-01" name="date selection">
+      </div>
+      <section class="rooms-container">
+        <!-- INSERT ROOMS HERE -->
+      </section>
+    </main>
+    <main class="guest-history-main hidden">
+      <div class="search-container">
+      <input type="text" placeholder="Search..." name="search">
+      <section class="history-container">
+      </div>
+
+      </section>
     </main>
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
