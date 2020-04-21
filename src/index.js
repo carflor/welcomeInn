@@ -6,8 +6,8 @@ import './css/base.scss';
 import moment from 'moment';
 import ApiController from './ApiController';
 import Manager from './Manager';
-import Room from './Room';
 import User from './User';
+import Room from './Room';
 import Booking from './Booking';
 
 let api = new ApiController();
@@ -36,16 +36,16 @@ const fetchData = () => {
 function loadManager(userData, roomData, reservationData) {
   manager = new Manager(userData, roomData, reservationData)
   today = moment().format("YYYY-MM-DD").split('-').join('/')
+  // today = '2020/04/28'
   console.log(manager);
 }
 
 // CUSTOMER INSTANTIATION
 function loadCustomer(customerId, manager) {
   let guest = []
-  let guestRooms = manager.rooms[0]
+  let guestRooms = manager.rooms
   let guestReservations = manager.bookingHistoryById(customerId, reservationData)
-  today = moment().format("YYYY-MM-DD").split('-').join('/')
-  manager.users[0].forEach(user => {
+  manager.users.forEach(user => {
     if (user.id === customerId) {
       guest.push(user)
     }
@@ -54,10 +54,9 @@ function loadCustomer(customerId, manager) {
   displayCustomer(customer)
 }
 
-function displayCustomer(customer) {
-  $('.guest-name').text(customer.name)
-  $('.points-message').text(`You currently have ${customer.rewardPoints().toFixed(0)} Reward Points!`)
-
+function displayCustomer(guest) {
+  $('.guest-name').text(guest.name)
+  $('.points-message').text(`You currently have ${guest.rewardPoints().toFixed(0)} Reward Points!`)
   let upcomingReservations = [];
   customer.reservations.forEach(reservation => {
     if (reservation.date >= today) {
@@ -67,8 +66,62 @@ function displayCustomer(customer) {
   reservedRoomDetails(customer, upcomingReservations)
 }
 
+const populateGuestHistory = () => {
+  console.log('avail arr', customer)
+  console.log('reservationts to show', customer.reservations)
+  customer.reservations.forEach(stay => {
+    $(`<section class="reservation-card">
+      <p>Room # ${stay.roomNumber}</p>
+      <p>"${stay.date}"</p>
+      <p>Confirmation #: ${stay.id}</p>
+      `).prependTo($('.guest-history-main'))
+  })
+}
+
+
+function calculateAvailableRooms(manager, today) {
+  let bookedNow = []
+  manager.reservations.forEach(booked => {
+    manager.rooms.forEach(room => {
+      if (booked.date === today && booked.roomNumber === room.number) {
+        bookedNow.push(room)        
+      }
+    })
+  })
+  let availableRooms = manager.rooms.filter(room => {
+    return !bookedNow.includes(room)
+  })
+  populateAvailableRooms(availableRooms);  
+}
+
+function populateAvailableRooms(availableRooms) {
+  // console.log('avail arr', availableRooms)
+  availableRooms.forEach(room => {
+    $(`<section class="room-card">
+      <p>Room # ${room.number}</p>
+      <p>"${room.roomType}"</p>
+      <p>Beds: ${room.numBeds} ${room.bedSize.toUpperCase()}</p>
+      <p>Bidet: ${room.bidet}</p>
+      <p>Cost: $${room.costPerNight}</p>
+      <button class="book">BOOK ROOM</button>
+    </section>`).prependTo($('.rooms-main'))
+  })
+}
+  
+$('.history').click(historyBtnHandler)
+$('.rooms').click(roomBtnHandler)
+
+function historyBtnHandler() {
+  // populateGuestHistory(customer)
+  displayGuestHistory()
+}
+
+function roomBtnHandler() {
+  // calculateAvailableRooms(manager, today)
+  displayRooms()
+}
+
 function displayCustomerReservations(customer, upcomingReservations, matchRoom) {
-  // console.log('room reserved', matchRoom)
   if (upcomingReservations.length >= 1) {
     $('.reservations-container').prepend(`
     <section class="current-reservation">
@@ -112,27 +165,66 @@ $('.submit-button').click(() => {
   }
 })
 
+// LOG IN VALIDATE
 function incorrectLogin() {
   alert("Please Enter Correct Username and Password")
   $('.username-input').val('')
   $('.password-input').val('')
 }
 
-
 // LOG OUT BUTTON
 $('.logout').click(() => location.reload(true))
 
 // DISPLAY DASHBOARD PAGES
 function displayManagerDashboard() {
-  $('.login-container').hide()
   $('.manager-dashboard').show()
+  $('.login-container').hide()
+  $('.guest-history-main').hide()
+  $('.rooms-main').hide()
   $('.button-container').removeClass('invisible')
+  $('.guests').removeClass('invisible')
 }
 
 function displayCustomerDashboard() {
-  $('.login-container').hide()
   $('.user-dashboard').show()
+  $('.manager-dashboard').hide()
+  $('.login-container').hide()
+  $('.guest-history-main').hide()
   $('.button-container').removeClass('invisible')
+}
+
+function displayRooms() {
+  $('.rooms-main').show()
+  $('.manager-dashboard').hide()
+  $('.login-container').hide()
+  $('.user-dashboard').hide()
+  $('.guest-history-main').hide()
+  $('.button-container').removeClass('invisible')
+  calculateAvailableRooms(manager, today)
+}
+
+function displayUsers() {
+  $('.users-page').show()
+  $('.manager-dashboard').hide()
+  $('.rooms-main').hide()
+  $('.login-container').hide()
+  $('.user-dashboard').hide()
+  $('.guest-history-main').hide()
+  $('.button-container').removeClass('invisible')
+  $('.guests').removeClass('invisible')
+}
+
+function displayGuestHistory() {
+  $('.guest-history-main').show()
+  $('.manager-dashboard').hide()
+  $('.user-dashboard').hide()
+  $('.login-container').hide()
+  $('.rooms-main').hide()
+  $('.button-container').removeClass('invisible')
+  populateGuestHistory(customer)
+}
+
+function displayAllHistory() {
 }
 
 fetchData()
