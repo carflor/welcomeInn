@@ -1,0 +1,23 @@
+.guest-history-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.reservation-card {
+  margin: 1vh 1vw;
+  width: 50vw;
+  color: $button-color;
+  background-color: lighten($room-color, 30%);
+  border-radius: 12px;
+  p {
+    margin: 1.5vh;
+    height: 6vh;
+    border-bottom: 2px solid $shiny-border;
+    align-items: center;
+    font-size: 1.3em;
+  }
+}
+
