@@ -95,17 +95,21 @@ function calculateAvailableRooms(manager, today) {
 }
 
 function populateAvailableRooms(availableRooms) {
-  // console.log('avail arr', availableRooms)
-  availableRooms.forEach(room => {
-    $(`<section class="room-card">
-      <p>Room # ${room.number}</p>
-      <p>"${room.roomType}"</p>
-      <p>Beds: ${room.numBeds} ${room.bedSize.toUpperCase()}</p>
-      <p>Bidet: ${room.bidet}</p>
-      <p>Cost: $${room.costPerNight}</p>
-      <button class="book">BOOK ROOM</button>
-    </section>`).prependTo($('.rooms-main'))
-  })
+  console.log('avail arr', availableRooms)
+  if (availableRooms.length > 0) {
+    availableRooms.forEach(room => {
+      $(`<section class="room-card">
+        <p>Room # ${room.number}</p>
+        <p>"${room.roomType}"</p>
+        <p>Beds: ${room.numBeds} ${room.bedSize.toUpperCase()}</p>
+        <p>Bidet: ${room.bidet}</p>
+        <p>Cost: $${room.costPerNight}</p>
+        <button class="book">BOOK ROOM</button>
+      </section>`).prependTo($('.rooms-main'))
+    })
+  } else {
+    $(`<p class="no-rooms-avail">Unfortunately, we do not have any available rooms for the date selected! Please try another date!</p>`).prependTo($('.rooms-main'))
+  }
 }
   
 $('.history').click(historyBtnHandler)
